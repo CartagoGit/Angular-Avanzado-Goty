@@ -38,19 +38,29 @@ export class GraficoBarraHorizontalComponent {
 
   public colorScheme = 'nightLights';
 
+  private _intervalo!: NodeJS.Timer;
+
   // ANCHOR : Constructor
   constructor() {
     this._crearResultadosAleatorios();
   }
 
-  ngOnInit(): void {}
+  ngOnDestroy(): void {
+    clearInterval(this._intervalo);
+  }
 
   // ANCHOR : Methods
 
   private _crearResultadosAleatorios() {
-    for (let i in this.results) {
-      this.results[i].value = Math.round(Math.random() * 500);
-    }
+    this._intervalo = setInterval(() => {
+      console.log('tick');
+      let auxList = [...this.results];
+      for (let i in auxList) {
+        const random = Math.round(Math.random() * 500);
+        auxList[i].value = random;
+      }
+      this.results = [...auxList];
+    }, 2000);
   }
 
   public onSelect(event: any): void {
