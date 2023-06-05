@@ -20,9 +20,11 @@ export class GraficoBarraHorizontalComponent {
       name: 'France',
       value: 7200000,
     },
+    {
+      name: 'Juego4',
+      value: 7500000,
+    },
   ];
-
-  public view: [number, number] = [0, 0];
 
   // options
   public showXAxis = true;
