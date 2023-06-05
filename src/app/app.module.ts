@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { InicioPageComponent } from './pages/inicio-page/inicio-page.component';
 import { GotyPageComponent } from './pages/goty-page/goty-page.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent, InicioPageComponent, GotyPageComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ComponentsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
