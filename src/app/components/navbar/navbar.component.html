@@ -1,21 +1,31 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-  <a class="navbar-brand" href="#">
+<nav
+  class="navbar navbar-expand-lg bg-body-tertiary d-flex align-items-center"
+  data-bs-theme="dark"
+>
+  <a class="navbar-brand">
     <img
       src="https://avatars.githubusercontent.com/u/92256090?v=4"
       alt="Logo"
       width="100"
       height="80"
       class="ms-4 logo"
+      routerLink="/inicio"
     />
   </a>
-  <a class="navbar-brand" href="#">Game of the Year</a>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="d-flex align-items-center h-100 titulo">
+    <span>Game of the Year</span>
+  </div>
+  <div class="collapse navbar-collapse ms-5" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Inicio</a>
+        <a class="nav-link" routerLink="/inicio" routerLinkActive="active"
+          >Inicio</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Votar</a>
+        <a class="nav-link" routerLink="/goty" routerLinkActive="active"
+          >Votar</a
+        >
       </li>
     </ul>
   </div>
