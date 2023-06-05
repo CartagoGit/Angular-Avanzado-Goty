@@ -7,22 +7,22 @@ import { Component } from '@angular/core';
 })
 export class GraficoBarraHorizontalComponent {
   // ANCHOR : Properties
-  public results: any[] = [
+  public results: { name: string; value: number }[] = [
     {
-      name: 'Germany',
-      value: 8940000,
+      name: 'Juego 1',
+      value: 0,
     },
     {
-      name: 'USA',
-      value: 5000000,
+      name: 'Juego 2',
+      value: 0,
     },
     {
-      name: 'France',
-      value: 7200000,
+      name: 'Juego 3',
+      value: 0,
     },
     {
-      name: 'Juego4',
-      value: 7500000,
+      name: 'Juego 4',
+      value: 0,
     },
   ];
 
@@ -39,9 +39,20 @@ export class GraficoBarraHorizontalComponent {
   public colorScheme = 'nightLights';
 
   // ANCHOR : Constructor
-  constructor() {}
+  constructor() {
+    this._crearResultadosAleatorios();
+  }
+
+  ngOnInit(): void {}
 
   // ANCHOR : Methods
+
+  private _crearResultadosAleatorios() {
+    for (let i in this.results) {
+      this.results[i].value = Math.round(Math.random() * 500);
+    }
+  }
+
   public onSelect(event: any): void {
     console.log(event);
   }
