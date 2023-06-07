@@ -1,1 +1,6 @@
-<p>goty-page works!</p>
+<div *ngFor="let juego of juegos()">
+  <h1>{{ juego.nombre }}</h1>
+  <img [src]="juego.imagen" alt="{{ juego.nombre }}" />
+  <button (click)="votar(juego)">Votar</button>
+  <span>{{ juego.votos }}</span>
+</div>
