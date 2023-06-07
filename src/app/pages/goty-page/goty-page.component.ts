@@ -1,6 +1,7 @@
-import { Component, Signal, WritableSignal, signal } from '@angular/core';
+import { Component, WritableSignal, signal } from '@angular/core';
 import { IJuegos } from 'src/app/interfaces/juegos.interface';
 import { GotyService } from 'src/app/services/goty.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-goty-page',
@@ -8,9 +9,7 @@ import { GotyService } from 'src/app/services/goty.service';
   styleUrls: ['./goty-page.component.scss'],
 })
 export class GotyPageComponent {
-  public juegos: WritableSignal<IJuegos[] | undefined> = signal<
-    IJuegos[] | undefined
-  >(undefined);
+  public juegos: WritableSignal<IJuegos[]> = signal([]);
 
   constructor(private _gotySvc: GotyService) {}
 
@@ -21,6 +20,30 @@ export class GotyPageComponent {
   }
 
   public votar(juego: IJuegos): void {
-    console.log('votado');
+    this._gotySvc.votarJuego(juego.id).subscribe({
+      next: (data) => {
+        const { ok, mensaje } = data;
+        if (!ok) {
+          Swal.fire({
+            title: 'Error!',
+            text: mensaje,
+            icon: 'error',
+          });
+        } else {
+          Swal.fire({
+            title: '¡Voto registrado!',
+            text: mensaje,
+            icon: 'success',
+          });
+        }
+      },
+      // error: (error) => {
+      //   Swal.fire({
+      //     title: 'Error!',
+      //     text: `Hubo un error al registrar el voto. Contacte con el administrador. ${error.message}`,
+      //     icon: 'error',
+      //   });
+      // },
+    });
   }
 }

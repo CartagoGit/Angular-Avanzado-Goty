@@ -3,6 +3,8 @@ html,
 body {
   background-color: #1c1c1c;
   color: white;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable both-edges;
 }
 
 hr {
