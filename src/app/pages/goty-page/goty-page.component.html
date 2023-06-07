@@ -1,6 +1,10 @@
-<div *ngFor="let juego of juegos()">
-  <h1>{{ juego.nombre }}</h1>
-  <img [src]="juego.imagen" alt="{{ juego.nombre }}" />
-  <button (click)="votar(juego)">Votar</button>
-  <span>{{ juego.votos }}</span>
-</div>
+<article class="juegos">
+  <section *ngFor="let juego of juegos()" data-bs-theme="dark">
+    <h3>{{ juego.nombre }}</h3>
+    <img [src]="juego.imagen" alt="{{ juego.nombre }}" />
+    <span class="d-flex w-100 align-items-center justify-content-center">
+      <button class="btn btn-secondary" (click)="votar(juego)">Votar</button>
+      <span class="ms-2">{{ juego.votos }}</span>
+    </span>
+  </section>
+</article>
