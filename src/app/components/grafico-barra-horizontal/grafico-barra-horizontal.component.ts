@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-grafico-barra-horizontal',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class GraficoBarraHorizontalComponent {
   // ANCHOR : Properties
-  public results: { name: string; value: number }[] = [
+  @Input() results: { name: string; value: number }[] = [
     {
       name: 'Juego 1',
       value: 0,
@@ -42,11 +42,11 @@ export class GraficoBarraHorizontalComponent {
 
   // ANCHOR : Constructor
   constructor() {
-    this._crearResultadosAleatorios();
+    // this._crearResultadosAleatorios();
   }
 
   ngOnDestroy(): void {
-    clearInterval(this._intervalo);
+    !!this._intervalo && clearInterval(this._intervalo);
   }
 
   // ANCHOR : Methods

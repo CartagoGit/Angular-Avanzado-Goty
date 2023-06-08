@@ -14,6 +14,10 @@ export class GotyService {
   public juegos: WritableSignal<IJuegos[]> = signal<IJuegos[]>([]);
   // private _firestore: Firestore = inject(Firestore);
   constructor(private _http: HttpClient, private _firestore: Firestore) {
+    this._actualizarJuegosEnTiempoReal();
+  }
+
+  private _actualizarJuegosEnTiempoReal(): void {
     const aCollection = collection(this._firestore, 'goty');
     const juegos$ = collectionData(aCollection);
     juegos$.subscribe((juegos) => {
