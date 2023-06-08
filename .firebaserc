@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "firestore-grafica-2b149": {
+      "hosting": {
+        "goty": [
+          "firestore-grafica-2b149"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "firestore-grafica-2b149"
+  }
+}
