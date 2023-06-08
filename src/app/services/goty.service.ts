@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, WritableSignal, inject, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 
 import { IJuegos } from '../interfaces/juegos.interface';
@@ -15,8 +14,13 @@ export class GotyService {
   public juegos: WritableSignal<IJuegos[]> = signal<IJuegos[]>([]);
   // private _firestore: Firestore = inject(Firestore);
   constructor(private _http: HttpClient, private _firestore: Firestore) {
-    // const aCollection = collection(this._firestore, 'goty')
-    // this.juegos = (toSignal(collectionData<IJuegos>(aCollection)) || []);
+    const aCollection = collection(this._firestore, 'goty');
+    const juegos$ = collectionData(aCollection);
+    juegos$.subscribe((juegos) => {
+      console.log(juegos);
+      this.juegos.update(() => [...(juegos as IJuegos[])]);
+    });
+    // this.juegos = toSignal(collectionData<IJuegos>(aCollection)) || [];
   }
 
   public getNominados(): Observable<IJuegos[]> {

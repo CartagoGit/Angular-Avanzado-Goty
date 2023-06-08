@@ -1,5 +1,5 @@
 <article class="juegos">
-  <section *ngFor="let juego of juegos()" data-bs-theme="dark">
+  <section *ngFor="let juego of gotySvc.juegos()" data-bs-theme="dark">
     <h3>{{ juego.nombre }}</h3>
     <img [src]="juego.imagen" alt="{{ juego.nombre }}" />
     <span class="d-flex w-100 align-items-center justify-content-center">

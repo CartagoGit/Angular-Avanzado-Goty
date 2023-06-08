@@ -10,3 +10,9 @@ body {
 hr {
   background-color: grey;
 }
+
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+  // overflow-y: visible !important;
+  // scrollbar-gutter: auto;
+  padding-right: 12px !important;
+}

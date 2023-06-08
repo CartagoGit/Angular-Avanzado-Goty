@@ -9,18 +9,18 @@ import Swal from 'sweetalert2';
   styleUrls: ['./goty-page.component.scss'],
 })
 export class GotyPageComponent {
-  public juegos: WritableSignal<IJuegos[]> = signal([]);
+  // public juegos: WritableSignal<IJuegos[]> = signal([]);
 
-  constructor(private _gotySvc: GotyService) {}
+  constructor(public gotySvc: GotyService) {}
 
   ngOnInit(): void {
-    this._gotySvc.getNominados().subscribe((data) => {
-      this.juegos.set(data);
-    });
+    // this._gotySvc.getNominados().subscribe((data) => {
+    //   this.juegos.set(data);
+    // });
   }
 
   public votar(juego: IJuegos): void {
-    this._gotySvc.votarJuego(juego.id).subscribe({
+    this.gotySvc.votarJuego(juego.id).subscribe({
       next: (data) => {
         const { ok, mensaje } = data;
         if (!ok) {

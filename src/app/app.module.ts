@@ -7,9 +7,12 @@ import { AppComponent } from './app.component';
 import { InicioPageComponent } from './pages/inicio-page/inicio-page.component';
 import { GotyPageComponent } from './pages/goty-page/goty-page.component';
 import { ComponentsModule } from './components/components.module';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent, InicioPageComponent, GotyPageComponent],
@@ -18,8 +21,11 @@ import { provideFunctions, getFunctions } from '@angular/fire/functions';
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideFunctions(() => getFunctions()),
+    provideFunctions(() => getFunctions()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
